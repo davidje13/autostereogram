@@ -1,0 +1,15 @@
+{
+	"name": "autostereogram",
+	"version": "0.0.0",
+	"private": true,
+	"author": "David Evans",
+	"license": "GPL-3.0",
+	"scripts": {
+		"format": "prettier --write .",
+		"start": "web-listener --dir src -H 'Cross-Origin-Opener-Policy: same-origin' -H 'Cross-Origin-Embedder-Policy: require-corp'"
+	},
+	"devDependencies": {
+		"prettier": "3.8.1",
+		"web-listener": "0.20.1"
+	}
+}
