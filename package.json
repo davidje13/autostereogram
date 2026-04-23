@@ -6,10 +6,13 @@
 	"license": "GPL-3.0",
 	"scripts": {
 		"format": "prettier --write .",
-		"start": "web-listener --dir src -H 'Cross-Origin-Opener-Policy: same-origin' -H 'Cross-Origin-Embedder-Policy: require-corp'"
+		"start": "web-listener --dir src/web-overrides --dir src --dependencies ./package.json -H 'Cross-Origin-Opener-Policy: same-origin' -H 'Cross-Origin-Embedder-Policy: require-corp'"
+	},
+	"dependencies": {
+		"curve-ops": "0.2.0"
 	},
 	"devDependencies": {
-		"prettier": "3.8.1",
-		"web-listener": "0.20.1"
+		"prettier": "3.8.3",
+		"web-listener": "0.21.0"
 	}
 }

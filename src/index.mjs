@@ -86,6 +86,9 @@ const displacementBuffer = new SharedArrayBuffer(
 );
 
 const worker = new Worker('/worker.mjs', { type: 'module' });
+worker.addEventListener('error', (e) => {
+	console.error('worker error', e.error);
+});
 worker.addEventListener('message', (e) => {
 	const { time } = e.data;
 	const displacements = new Int16Array(

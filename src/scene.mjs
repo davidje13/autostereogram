@@ -1,5 +1,5 @@
+import { pt3Dist2, pt3Dot, pt3Len2, pt3Mad, pt3Sub } from './curve-ops.mjs';
 import { projectZ } from './helpers.mjs';
-import { pt3Dist2, pt3Dot, pt3Len2, pt3Mad, pt3Sub } from './Pt3.mjs';
 
 export const rayTrace = (nearZ, farZ) => (from, to) => {
 	// test scene: ball in front of infinite plane
