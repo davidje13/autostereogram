@@ -88,8 +88,8 @@ export function applyAutoStereogram(
 	const eyeRView = [];
 	for (let x = 0; x < w; ++x) {
 		const screen = projectToView(x);
-		eyeLView.push(rayTrace(eyeL, screen).x);
-		eyeRView.push(rayTrace(eyeR, screen).x);
+		eyeLView.push(rayTrace(eyeL, screen));
+		eyeRView.push(rayTrace(eyeR, screen));
 	}
 	const screenZ = projectToView(0).z;
 	for (let x = 0; x < w; ++x) {
@@ -106,7 +106,7 @@ export function applyAutoStereogram(
 			//modelR = eyeRView[Math.round(xS)];
 		}
 		if (xS < x && xS >= 0 && xS <= w - 1) {
-			// && Math.abs(modelR - modelL) < 1e-15) {
+			// && Math.abs(modelR.x - modelL.x) < 1e-15) {
 			if (integerDisplacement) {
 				displacement[x] = displacement[Math.round(xS)];
 			} else {

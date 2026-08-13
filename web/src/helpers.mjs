@@ -1,4 +1,4 @@
-import { pt3Mad, pt3Sub } from './curve-ops.mjs';
+import { pt3Mad, pt3Sub } from 'curve-ops';
 
 export const projectZ = (from, to, targetZ) =>
 	pt3Mad(pt3Sub(to, from), (targetZ - from.z) / (to.z - from.z), from);

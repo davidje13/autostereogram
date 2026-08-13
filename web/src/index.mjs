@@ -1,7 +1,13 @@
 import { ceilTo, roundTo } from './helpers.mjs';
-import { boostContrast, perlinNoise } from './patterns.mjs';
+import {
+	boostContrast,
+	checker,
+	gradient,
+	perlinNoise,
+	rect,
+} from './patterns.mjs';
 
-const dpr = 1; //Math.min(window.devicePixelRatio, 2);
+const dpr = Math.min(window.devicePixelRatio, 1);
 const width = window.innerWidth * dpr;
 const height = window.innerHeight * dpr;
 
@@ -56,10 +62,18 @@ for (let i = 0; i < width * height; ++i) {
 }
 
 // Depth Map
+//const dx = width * 0.5 * scale;
+//const dy = height * 0.5 * scale;
+//const projectToView = (x, y) => ({
+//	x: x * scale - dx,
+//	y: y * scale - dy,
+//	z: 0,
+//});
+//const rt = rayTrace(nearZ, farZ);
 //for (let y = 0; y < height; ++y) {
 //	for (let x = 0; x < width; ++x) {
 //		const screen = projectToView(x, y);
-//		const model = rayTrace(eye, screen);
+//		const model = rt(eye, screen);
 //		const depth = 256 * ((model.z - farZ) / (nearZ - farZ));
 //		const p = (y * width + x) * 4;
 //		dat.data[p] = depth;
@@ -90,7 +104,6 @@ worker.addEventListener('error', (e) => {
 	console.error('worker error', e.error);
 });
 worker.addEventListener('message', (e) => {
-	const { time } = e.data;
 	const displacements = new Int16Array(
 		displacementBuffer,
 		0,
@@ -122,7 +135,7 @@ worker.addEventListener('message', (e) => {
 		}
 	}
 	ctx.putImageData(dat, 0, 0);
-	console.log('time', time);
+	//console.log('time', e.data.time);
 });
 
 worker.postMessage({

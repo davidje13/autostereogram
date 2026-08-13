@@ -1,4 +1,4 @@
-import { pt3Dist2, pt3Dot, pt3Len2, pt3Mad, pt3Sub } from './curve-ops.mjs';
+import { pt3Dist2, pt3Dot, pt3Len2, pt3Mad, pt3Sub } from 'curve-ops';
 import { projectZ } from './helpers.mjs';
 
 export const rayTrace = (nearZ, farZ) => (from, to) => {
